@@ -1,0 +1,14 @@
+Github URL : https://github.com/Batuu22/React-JS
+
+Backend URL: 
+http:localhost:4444
+http://localhost:4444/swagger-ui/index.html
+http://localhost:4444/h2-console
+
+Frontend URL: 
+http://localhost:3000/
+
+-------------------------------
+
+NPM
+npm i axios --save
