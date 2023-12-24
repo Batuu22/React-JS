@@ -27,7 +27,7 @@ export default class RouterBlog extends Component {
 
     //Return
     return (
-      <div>RouterBlog</div>
+      <React.Fragment>RouterBlog</React.Fragment>
     ) //end return
   } //end render
 } //end class
