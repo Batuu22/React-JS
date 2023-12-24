@@ -1,8 +1,16 @@
 //rcc
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+// i18next
+import { withTranslation } from 'react-i18next';
+
+// Components
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
 
 //CLASS
-export default class RouterBlog extends Component {
+class RouterBlog extends Component {
 
     //Componentteki isim
     static displayName = "Router_Blog"; 
@@ -27,8 +35,19 @@ export default class RouterBlog extends Component {
 
     //Return
     return (
-      <React.Fragment>RouterBlog</React.Fragment>
+      <React.Fragment>
+        <Header/>
+        <br />
+        <Main/>
+        <br/>
+        <Footer/>
+      </React.Fragment>
     ) //end return
   } //end render
 } //end class
 
+// Class adı aşağıda gösterme
+//export default RouterBlog;
+
+// Higher Order Component
+export default withTranslation()(RouterBlog);
