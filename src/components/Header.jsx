@@ -1,5 +1,5 @@
 //rcc
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 // i18next
 import { withTranslation } from 'react-i18next';
@@ -34,7 +34,7 @@ class Header extends Component {
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark">
                     <div className="container">
                         <a className="navbar-brand" href="#">
-                            Navbar
+                        <i className={this.props.logo}></i>
                         </a>
                         <button
                             className="navbar-toggler d-lg-none"
