@@ -1,0 +1,10 @@
+p {
+    text-align: justify;
+}
+
+p:hover {
+    background-color: #000;
+    color: #fff;
+    transition: 2s all;
+    padding: 1rem;
+}

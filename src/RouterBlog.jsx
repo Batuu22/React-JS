@@ -18,6 +18,7 @@ import BlogCreate from './components/Blog_Class/BlogCreate';
 import BlogUpdate from './components/Blog_Class/BlogUpdate';
 import BlogView from './components/Blog_Class/BlogView';
 
+
 //CLASS
 class RouterBlog extends Component {
 
@@ -54,13 +55,14 @@ class RouterBlog extends Component {
             {/* Main */}
             <Route path='/' element={<Main/>} />
 
-            {/* CLASS Component */}
+            {/* CLASS Component CRUD */}
             <Route path='/blog/list' element={<BlogList/>}/>
             <Route path='/blog/create' element={<BlogCreate/>}/>
             <Route path='/blog/update/:id' element={<BlogUpdate/>}/>
             <Route path='/blog/view/:id' element={<BlogView/>}/>
 
-            <Route path='*' element={<Navigate to={'/'}/>}/>
+            {/* For Bad Request */}
+            <Route path='*' element={<Navigate to='/'/>}/>
 
         </Routes>
         </div>
