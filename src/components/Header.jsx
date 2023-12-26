@@ -28,6 +28,8 @@ class Header extends Component {
 
     //Render
     render() {
+        //object destructing
+        const {logo,t} = this.props;
 
         //Return
         return (
@@ -35,7 +37,7 @@ class Header extends Component {
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark">
                     <div className="container">
                         <a className="navbar-brand" href="#">
-                        <i className={this.props.logo}></i>
+                        <i className={logo}></i>
                         </a>
                         <button
                             className="navbar-toggler d-lg-none"
@@ -52,7 +54,7 @@ class Header extends Component {
                             <ul className="navbar-nav me-auto mt-2 mt-lg-0">
                                 <li className="nav-item">
                                     <a className="nav-link active" href="#" aria-current="page">
-                                        {this.props.t('homepage')}
+                                        {t('homepage')}
                                         <span className="visually-hidden">(current)</span>
                                     </a>
                                 </li>
