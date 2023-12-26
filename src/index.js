@@ -10,6 +10,9 @@ import RouterBlog from './RouterBlog';
 // BrowserRouter
 import { BrowserRouter } from 'react-router-dom';
 
+// Dil Seçeneği için ekledim
+import './internationalization/i18nlanguage';
+
 // ROOT
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

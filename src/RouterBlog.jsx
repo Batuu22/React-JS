@@ -60,7 +60,7 @@ class RouterBlog extends Component {
             <Route path='/blog/create' element={<BlogCreate/>}/>
             <Route path='/blog/update/:id' element={<BlogUpdate/>}/>
             <Route path='/blog/view/:id' element={<BlogView/>}/>
-
+            
             {/* For Bad Request */}
             <Route path='*' element={<Navigate to='/'/>}/>
 
