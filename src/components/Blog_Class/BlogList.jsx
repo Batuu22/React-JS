@@ -13,42 +13,43 @@ import BlogApi from '../../services/BlogApi';
 // CLASS
 class BlogList extends Component {
 
-    //Componentteki isim
-    static displayName = "Blog_List";
+  //Componentteki isim
+  static displayName = "Blog_List";
 
-    //constructor
-    constructor(props){
-        super(props);
+  //constructor
+  constructor(props) {
+    super(props);
 
-        //STATE
-        this.state={
-          blogList:[],
-        };
+    //STATE
+    this.state = {
+      blogList: [],
+    };
 
-        //BIND
+    //BIND
 
-    }// end constructor
+  }// end constructor
 
-    //CDM
-    componentDidMount(){
-      BlogApi.blogServiceList()
-      .then((response)=>{
+  //CDM
+  componentDidMount() {
+    BlogApi.blogServiceList()
+      .then((response) => {
         this.setState({
-          blogList:response.data,
+          blogList: response.data,
         }) //end setState
       })
-      .catch((err)=>{
+      .catch((err) => {
         console.error(err);
       });
-    }// end CDM
+  }// end CDM
 
-    //FUNCTION
+  //FUNCTION
 
   //Render
   render() {
 
     //object destructing
-    const {t} = this.props;
+    const { t } = this.props;
+    const {blogList} = this.state;
 
     //Return
     return (
@@ -62,15 +63,25 @@ class BlogList extends Component {
               <th>{t('blog_header')}</th>
               <th>{t('blog_content')}</th>
               <th>{t('date')}</th>
+              <th>{t('update')}</th>
+              <th>{t('view')}</th>
+              <th>{t('delete')}</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>item 1</td>
-              <td>item 2</td>
-              <td>item 3</td>
-              <td>item 4</td>
-            </tr>
+            {
+              blogList.map((temp)=>
+              <tr key={temp.id}>
+                <td>{temp.id}</td>
+                <td>{temp.header}</td>
+                <td>{temp.content}</td>
+                <td>{temp.systemDate}</td>
+                <td><i className="fa-solid fa-pen-nib text-primary" style={{"cursor":"pointer"}}></i></td>
+                <td><i className="fa-solid fa-binoculars text-warning" style={{"cursor":"pointer"}}></i></td>
+                <td><i className="fa-solid fa-trash text-danger" style={{"cursor":"pointer"}}></i></td>
+              </tr>) //end map
+            } 
+          
           </tbody>
         </table>
       </React.Fragment>
