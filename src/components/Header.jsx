@@ -29,15 +29,15 @@ class Header extends Component {
     //Render
     render() {
         //object destructing
-        const {logo,t} = this.props;
+        const { logo, t } = this.props;
 
         //Return
         return (
             <React.Fragment>
-                <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+                <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
                     <div className="container">
                         <a className="navbar-brand" href="#">
-                        <i className={logo}></i>
+                            <i className={logo}></i>
                         </a>
                         <button
                             className="navbar-toggler d-lg-none"
@@ -84,18 +84,41 @@ class Header extends Component {
                                     </div>
                                 </li>
                             </ul>
+                            {/* Member Process */}
+                            <ul className='navbar-nav ml-auto mt-2 mt-lg-0'>
+                                <li className="nav-item dropdown">
+                                    <a
+                                        className="nav-link dropdown-toggle"
+                                        href="#"
+                                        id="dropdownId"
+                                        data-bs-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                    >
+                                        {t('member_process')}
+                                    </a>
+                                    <div className="dropdown-menu" aria-labelledby="dropdownId">
+                                        <a className="dropdown-item" href="#">
+                                        {t('log_in')}
+                                        </a>
+                                        <a className="dropdown-item" href="#">
+                                        {t('register')}
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
 
                             {/* For Language Reusability */}
-                            <OtherLanguageReusability/>
+                            <OtherLanguageReusability />
 
                             <form className="d-flex my-2 my-lg-0">
                                 <input
                                     className="form-control me-sm-2"
                                     type="text"
-                                    placeholder="Search"
+                                    placeholder={this.props.t('search_input')}
                                 />
                                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-                                    Search
+                                    {t('search_button')}
                                 </button>
                             </form>
                         </div>

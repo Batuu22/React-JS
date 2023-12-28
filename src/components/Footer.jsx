@@ -18,7 +18,7 @@ class Footer extends Component {
         this.state = {};
 
         //BIND
-        this.date = this.date(this);
+        this.date=this.date.bind(this);
 
     }//end constructor
 
@@ -165,7 +165,7 @@ class Footer extends Component {
                     {/* Section: Links  */}
                     {/* Copyright */}
                     <div className="text-center p-4" style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}>
-                        {this.props.copy} {this.date}
+                        {this.props.copy} {this.date()}
                         <a className="text-reset fw-bold" href="https://mdbootstrap.com/">
                             Blog
                         </a>

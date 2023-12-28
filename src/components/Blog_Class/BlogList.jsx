@@ -9,6 +9,7 @@ import { withTranslation } from 'react-i18next';
 
 // Blog Api
 import BlogApi from '../../services/BlogApi';
+import { Link } from 'react-router-dom';
 
 // CLASS
 class BlogList extends Component {
@@ -26,6 +27,9 @@ class BlogList extends Component {
     };
 
     //BIND
+    this.update=this.update.bind(this);
+    this.delete=this.delete.bind(this);
+    this.view=this.view.bind(this);
 
   }// end constructor
 
@@ -33,6 +37,7 @@ class BlogList extends Component {
   componentDidMount() {
     BlogApi.blogServiceList()
       .then((response) => {
+        // console.log(response.data);
         this.setState({
           blogList: response.data,
         }) //end setState
@@ -43,6 +48,28 @@ class BlogList extends Component {
   }// end CDM
 
   //FUNCTION
+  //UPDATE
+  update(id) {
+      //alert(id);
+  }
+
+  //DELETE
+  delete(id) {
+    BlogApi.blogServiceDeleteId(id)
+    .then((response)=>{
+      this.setState({
+        blogList:this.state.blogList.filter((temp_filter)=>temp_filter.id!=id)
+      })
+    })
+    .catch((err)=>{
+      window.alert("Silmede bir hata var" + err);
+    });
+  }
+
+  //VIEW
+  view(id) {
+    //alert(id);
+  }
 
   //Render
   render() {
@@ -54,7 +81,12 @@ class BlogList extends Component {
     //Return
     return (
       <React.Fragment>
-        <h1 className="text-center display-4 text-uppercase">Blog List</h1>
+        <h1 className="text-center display-4 text-uppercase mt-5">{t('blog_list')}</h1>
+        <Link to={'/blog/create'}>
+        <button className="btn btn-primary"><i className="fa-solid fa-plus"></i> {t('blog_create')}</button>
+        </Link>
+        <button className="btn btn-danger ms-2"><i className="fa-solid fa-trash"></i> {t('blog_delete_all')}</button>
+
         {/* table.table.table-hover.table-striped>thead>tr>th{item $}*4^^tbody>tr>td{item $}*4 */}
         <table className="table table-hover table-striped">
           <thead>
@@ -76,9 +108,38 @@ class BlogList extends Component {
                 <td>{temp.header}</td>
                 <td>{temp.content}</td>
                 <td>{temp.systemDate}</td>
-                <td><i className="fa-solid fa-pen-nib text-primary" style={{"cursor":"pointer"}}></i></td>
-                <td><i className="fa-solid fa-binoculars text-warning" style={{"cursor":"pointer"}}></i></td>
-                <td><i className="fa-solid fa-trash text-danger" style={{"cursor":"pointer"}}></i></td>
+                {/* UPDATE */}
+                <td>
+                  <i 
+                  className="fa-solid fa-pen-nib text-primary text-center" 
+                  style={{"cursor":"pointer"}}
+                  onClick={()=>this.update(temp.id)}>
+                  </i>
+                </td>
+                {/* VIEW */}
+                <td>
+                  <i
+                  className="fa-solid fa-binoculars text-warning text-center"
+                  style={{"cursor":"pointer"}}
+                  onClick={()=>this.view(temp.id)}>
+                  </i>
+                </td>
+                {/* DELETE */}
+                <td>
+                  <i
+                  className="fa-solid fa-trash text-danger text-center"
+                  style={{"cursor":"pointer"}}
+                  onClick={()=>{
+                    if(window.confirm("Silmek istediğinize emin misiniz ?")) {
+                      this.delete(temp.id);
+                      window.alert("İşlem Başarılı");
+                    }
+                    else {
+                      window.alert("Silinmedi !!!");
+                    }
+                  }}>
+                  </i>
+                </td>
               </tr>) //end map
             } 
           
