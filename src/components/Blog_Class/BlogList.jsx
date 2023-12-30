@@ -9,6 +9,8 @@ import { withTranslation } from 'react-i18next';
 
 // Blog Api
 import BlogApi from '../../services/BlogApi';
+
+//Router
 import { Link } from 'react-router-dom';
 
 // CLASS
@@ -51,6 +53,7 @@ class BlogList extends Component {
   //UPDATE
   update(id) {
       //alert(id);
+      window.open("/blog/update/"+id);
   }
 
   //DELETE
@@ -118,11 +121,13 @@ class BlogList extends Component {
                 </td>
                 {/* VIEW */}
                 <td>
+                  <Link to={`/blog/view/${temp.id}`}>
                   <i
                   className="fa-solid fa-binoculars text-warning text-center"
                   style={{"cursor":"pointer"}}
                   onClick={()=>this.view(temp.id)}>
                   </i>
+                  </Link>
                 </td>
                 {/* DELETE */}
                 <td>

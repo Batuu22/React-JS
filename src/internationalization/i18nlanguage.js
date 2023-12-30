@@ -28,6 +28,7 @@ i18n.use(initReactI18next).init({
                     'member_process':"Member Process",
                     'log_in':"Sign in",
                     'register':"Register",
+                    'directTo_BlogList': "Redirect To BlogList",
                  } 
             },
         tr:
@@ -55,6 +56,7 @@ i18n.use(initReactI18next).init({
                     'member_process':"Üye İşlemleri",
                     'log_in':"Oturum Aç",
                     'register':"Kayıt Ol",
+                    'directTo_BlogList': "Blog Liste Yönlen",
                 }
             }
     },
