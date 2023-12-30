@@ -17,32 +17,31 @@ import otherLanguageServices from './otherLanguageServices';
 function OtherLanguageReusability(props) {
 
     //  Bayraklar ve Datalar
-    const internationalizationLanguageService=(languageButtonTrigger)=>{
-        
-        // Object Destructing
-        const {i18n}=props;
+    const internationalizationLanguageService = (languageButtonTrigger) => {
 
+        // Object Destructing
+        const { i18n } = props;
         i18n.changeLanguage(languageButtonTrigger);
         otherLanguageServices.headerAccessLanguageServices(languageButtonTrigger);
-    }   
+    }
 
-  //Return
-  return (
-    <React.Fragment>
-        <ul className='navbar-nav ml-auto mt-2 mt-lg-0'>
-            <Link>
-            <li className='nav-item'>
-                <img src={trFlag} alt="TR_Flag" style={{width:45,marginRight:5}} onClick={()=>internationalizationLanguageService('tr')} />
-            </li>
-            </Link>
-            <Link>
-            <li className='nav-item'>
-                <img src={ukFlag} alt="UK_Flag" style={{width:45,marginRight:5}} onClick={()=>internationalizationLanguageService('en')}/>
-            </li>
-            </Link>
-        </ul>
-    </React.Fragment>
-  )// return end
+    //Return
+    return (
+        <React.Fragment>
+            <ul className='navbar-nav ml-auto mt-2 mt-lg-0'>
+                <Link>
+                    <li className='nav-item'>
+                        <img src={trFlag} alt="TR_Flag" style={{ width: 45, marginRight: 5 }} onClick={() => internationalizationLanguageService('tr')} />
+                    </li>
+                </Link>
+                <Link>
+                    <li className='nav-item'>
+                        <img src={ukFlag} alt="UK_Flag" style={{ width: 45, marginRight: 5 }} onClick={() => internationalizationLanguageService('en')} />
+                    </li>
+                </Link>
+            </ul>
+        </React.Fragment>
+    )// return end
 }// function end
 
 export default withTranslation()(OtherLanguageReusability);

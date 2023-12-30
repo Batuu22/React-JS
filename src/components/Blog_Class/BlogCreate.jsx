@@ -10,6 +10,9 @@ import BlogApi from '../../services/BlogApi';
 //ROUTER
 import { Link } from 'react-router-dom';
 
+//Component
+import ReusabilityBlogInput from '../ReusabilityBlogInput';
+
 //CLASS
 class BlogCreate extends Component {
 
@@ -140,7 +143,7 @@ class BlogCreate extends Component {
           {/* HEADER */}
           <div className="form-outline mb-4">
             <label className="form-label" htmlFor="form1Example2">{t('blog_header')}</label>
-            <input
+            {/* <input
               type="text"
               id="header"
               name="header" //backende veri gönderme için kullanılır. //backende giden veri
@@ -149,9 +152,22 @@ class BlogCreate extends Component {
               required={true}
               autoFocus={true}
               onChange={this.onChangeInputValue}
-            />
+            /> */}
             {/* Validaton Header */}
-            <span id="headerValidation_id" className='text-danger'>{header}</span>
+            {/* <span id="headerValidation_id" className='text-danger'>{header}</span> */}
+
+            {/* HEADER REUSABILITY */}
+            <ReusabilityBlogInput 
+             type="text"
+             id="header"
+             name="header"
+             placeholder={t('blog_header')}
+             classNameProps="form-control"
+             required={true}
+             autoFocus={true}
+             onChange={this.onChangeInputValue}
+             errors = {header}
+            />
           </div>
 
           {/* CONTENT */}
