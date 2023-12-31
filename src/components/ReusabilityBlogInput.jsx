@@ -8,11 +8,12 @@ import { withTranslation } from 'react-i18next'
 function ReusabilityBlogInput(props) {
 
     // object destructing
-    const { type, id, name, placeholder, classNameProps, required, autoFocus, onChange, errors } = props;
+    const { type, id, name, placeholder, classNameProps, required, autoFocus, onChange, errors, onKeyDown } = props;
 
     //RETURN
     return (
         <React.Fragment>
+            <label className="form-label" htmlFor={id}>{placeholder}</label>
             <input
                 type={type}
                 id={id}
@@ -22,6 +23,7 @@ function ReusabilityBlogInput(props) {
                 required={required}
                 autoFocus={autoFocus}
                 onChange={onChange}
+                onKeyDown={onKeyDown}
             />
             {/* Validaton Header */}
             <span id="headerValidation_id" className='text-danger'>{errors}</span>

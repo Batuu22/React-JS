@@ -35,6 +35,7 @@ class BlogCreate extends Component {
 
     //BIND
     this.reset = this.reset.bind(this);
+    this.clearValidaton=this.clearValidaton.bind(this);
     this.onChangeIsRead = this.onChangeIsRead.bind(this);
     this.onChangeInputValue = this.onChangeInputValue.bind(this);
     this.createSubmit = this.createSubmit.bind(this);
@@ -46,6 +47,11 @@ class BlogCreate extends Component {
   reset() {
     document.getElementById("header").value = null;
     document.getElementById("content").value = null;
+  }
+
+  clearValidaton() {
+    document.getElementById("headerValidation_id").innerHTML=null;
+    document.getElementById("contentValidation_id").innerHTML=null;
   }
 
   onChangeIsRead = (event) => {
@@ -103,6 +109,9 @@ class BlogCreate extends Component {
       const response = await BlogApi.blogServiceCreate(blogDto);
       if (response.status === 200) {
         alert('Başarılı');
+        //localStorage
+        localStorage.setItem("Blog_Header",this.state.header);
+        localStorage.setItem("Blog_Content",this.state.content);
         //SPINNER GÖNDERDİKTEN SONRA
         this.setState({
           spinnerData: false,
@@ -142,7 +151,7 @@ class BlogCreate extends Component {
         <form>
           {/* HEADER */}
           <div className="form-outline mb-4">
-            <label className="form-label" htmlFor="form1Example2">{t('blog_header')}</label>
+            {/* <label className="form-label" htmlFor="">{t('blog_header')}</label> */}
             {/* <input
               type="text"
               id="header"
@@ -167,6 +176,7 @@ class BlogCreate extends Component {
              autoFocus={true}
              onChange={this.onChangeInputValue}
              errors = {header}
+             onKeyDown = {this.clearValidaton}
             />
           </div>
 
@@ -182,6 +192,7 @@ class BlogCreate extends Component {
               autoFocus={false}
               rows="4"
               onChange={this.onChangeInputValue}
+              onKeyDown={this.clearValidaton}
             >
             </textarea>
             {/* Validaton Content */}
