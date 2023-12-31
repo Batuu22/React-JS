@@ -30,7 +30,7 @@ class BlogCreate extends Component {
       isRead: false, // Sözleşme kuralları ?
       spinnerData: false, //Spinner
       multipleRequest: false, // Çoklu Kayıtlara izin verme
-      validationErrors: {}, //Validation Errors
+      validationErrors: {}, //Backendden gelen verileri almak
     };
 
     //BIND
@@ -141,6 +141,7 @@ class BlogCreate extends Component {
     //object destructing
     const { t } = this.props;
     const { isRead, multipleRequest, validationErrors } = this.state;
+    // Hatayı yakalamak
     const { header, content } = validationErrors;
 
     //Return
@@ -175,6 +176,7 @@ class BlogCreate extends Component {
              required={true}
              autoFocus={true}
              onChange={this.onChangeInputValue}
+            //errors = {this.state.validationErrors.header}
              errors = {header}
              onKeyDown = {this.clearValidaton}
             />
@@ -182,7 +184,7 @@ class BlogCreate extends Component {
 
           {/* CONTENT */}
           <div className="form-outline mb-4">
-            <label className="form-label" htmlFor="form1Example3">{t('blog_content')}</label>
+            <label className="form-label" htmlFor="content">{t('blog_content')}</label>
             <textarea
               className="form-control"
               id="content"
