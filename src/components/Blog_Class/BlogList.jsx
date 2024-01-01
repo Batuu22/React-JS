@@ -53,7 +53,8 @@ class BlogList extends Component {
   //UPDATE
   update(id) {
       //alert(id);
-      window.open("/blog/update/"+id);
+      //localStorage
+      localStorage.setItem("Blog_ID",id);
   }
 
   //DELETE
@@ -113,11 +114,13 @@ class BlogList extends Component {
                 <td>{temp.systemDate}</td>
                 {/* UPDATE */}
                 <td>
+                  <Link to={`/blog/update/${temp.id}`}>
                   <i 
                   className="fa-solid fa-pen-nib text-primary text-center" 
                   style={{"cursor":"pointer"}}
                   onClick={()=>this.update(temp.id)}>
                   </i>
+                  </Link>
                 </td>
                 {/* VIEW */}
                 <td>

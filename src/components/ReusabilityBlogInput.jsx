@@ -8,7 +8,7 @@ import { withTranslation } from 'react-i18next'
 function ReusabilityBlogInput(props) {
 
     // object destructing
-    const { type, id, name, placeholder, classNameProps, required, autoFocus, onChange, errors, onKeyDown } = props;
+    const { type, id, name, placeholder, classNameProps, required, autoFocus, onChange, errors, onKeyDown, } = props;
 
     //RETURN
     return (

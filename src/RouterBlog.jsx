@@ -12,11 +12,14 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 
-// Component CRUD
+// Component CLASS CRUD
 import BlogList from './components/Blog_Class/BlogList';
 import BlogCreate from './components/Blog_Class/BlogCreate';
 import BlogUpdate from './components/Blog_Class/BlogUpdate';
 import BlogView from './components/Blog_Class/BlogView';
+
+// Component FUNCTION CRUD
+import Blog_List from './components/Blog_Function/Blog_List';
 
 
 //CLASS
@@ -60,6 +63,9 @@ class RouterBlog extends Component {
             <Route path='/blog/create' element={<BlogCreate/>}/>
             <Route path='/blog/update/:id' element={<BlogUpdate/>}/>
             <Route path='/blog/view/:id' element={<BlogView/>}/>
+
+            {/* FUNCTION Component CRUD */}
+            <Route path='/blog/list2' element={<Blog_List/>}/>
             
             {/* For Bad Request */}
             <Route path='*' element={<Navigate to='/'/>}/>
